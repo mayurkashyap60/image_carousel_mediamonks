@@ -1,0 +1,1 @@
+As per Rich Media Test Requirements, I'm using the GSAP TweenLite library for Animations. It doesn't contain any other libraries. I have written this code from the scratch with files containing "HTML, CSS, JavaScript". 

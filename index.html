@@ -2,33 +2,47 @@
 <html lang="en">
 
 <head>
-
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Image Carousel - MediaMonks </title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Image Carousel</title>
+    <link rel="stylesheet" href="css/app.css"><!-- Custom css file path for image slider -->
 </head>
 
 <body>
-  <div id="slider">
-    <div class="slider_header">
-      <a id="prev" href="#">&#9664;</a>
-      <img src="images/logo.png" class="logo" alt="Logo">
-      <a id="next" href="#">&#9654;</a>
+    <!-- Parent div for containing for slider's all elements -->
+    <div class="myslider">
+        <!-- It's slider for contain previous slider button, next slider button with logo-->
+        <div class="slider_header">
+            <a id="prev" href="#">&#9664;</a>
+            <img src="images/logo.png" class="logo" alt="Logo">
+            <a id="next" href="#">&#9654;</a>
+        </div>
+        <!-- Starting main slider with elements -->
+        <div id="slider">
+            <!-- Div for sliding with count in javascript with array -->
+            <div class="slide">
+                <!-- >img class as child elements for storing in array in javascript  -->
+                <img src="images/01.jpg" alt="img1" class="img">
+            </div>
+            <div class="slide">
+                <img src="images/02.jpg" alt="img2" class="img">
+            </div>
+            <div class="slide">
+                <img src="images/03.jpg" alt="img3" class="img">
+            </div>
+            <div class="slide">
+                <img src="images/04.jpg" alt="img4" class="img">
+            </div>
+            <div class="slide">
+                <img src="images/05.jpg" alt="img5" class="img">
+            </div>
+        </div>
     </div>
-    <div class="slider_body">
-      <ul id="sliderWrap">
-        <li><img src="images/01.jpg" alt="01.jpg"></li>
-        <li><img src="images/02.jpg" alt="02.jpg"></li>
-        <li><img src="images/03.jpg" alt="03.jpg"></li>
-        <li><img src="images/04.jpg" alt="04.jpg"></li>
-        <li><img src="images/05.jpg" alt="05.jpg"></li>
-      </ul>
-    </div>
-  </div>
 
-  <script src="js/app.js"></script>
+    <!-- Define the scripts for image slider -->
+    <script src='js/gsap.min.js'></script> <!-- Minified gsap library -->
+    <script src="js/app.js"></script> <!-- Custom Javascript file -->
 </body>
 
 </html>
