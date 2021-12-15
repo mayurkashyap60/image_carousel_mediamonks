@@ -14,34 +14,46 @@
     <div class="myslider">
         <!-- It's slider for contain previous slider button, next slider button with logo-->
         <div class="slider_header">
-            <a id="prev" href="#">&#9664;</a>
+            <!-- <a id="prev" href="#">&#9664;</a> -->
+            <svg id="prev" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64"
+                height="25" viewBox="0 0 64 64">
+                <image id="Layer_0" data-name="Layer 0" width="64" height="64"
+                    xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAAAbEAAAGxAWGYKA4AAAAHdElNRQflDA4XIQFNgyojAAACqklEQVRo3s2ZP4gTQRSHv9mEOwzhimuEBAyE664QrCNI4KxysdQ6pLhC0SJaKAi2CtdoK1hqd6ZIcyIB7QIHFhHRI4WQwAW0CAoJSJ7FZpOciZedyexN5hXZJG/29+3u/Hn7nhL0mkqSJ0tqbNAZW4v38kvzhBLaSLNHjf6ZTn1q7JHWOGsopwQVGgxDn3VIgwoJKwDEKNPWuFETa1MmtiQABZpG4oE1KRgDkKG+lHhgdTIGAOToWpEXhC45TQBKDKzJC8KAUmgAYuxbFQ9sf96QnCd/EIm8IBzMIswCRHP147uwAIBSpPKC/DsWTn/JWR5682xwekZMH2YsTryzrDu9LkwD2Fl2wlh9DgCFc5MXZLJABx+xJdd8XWsGEzIAKJ+rvCCUpwBIGG64s3bEo5CebT9e8AEqVsRPKONxLbR/ZQLQWFp8wDM2BEEDoDECIK0RbM23KlvBoQbAkLTgAbsozUh2un3muhTl2KCnYhc8oGgs/pM7XJZD4/5FgOSCQPt/9ocXbM7+rPEIhD7JOHnWDdjfcU+axlcetHXyHlntbsfckB0L8gBZj5RWhx4P2JaqFXGAVFwDYMgrHsqJNXFNgI/clSOr4gCpcI/gO7fkagTykILegqnym8dcCD+ztKah0PMiuCqt5tFZ4JHgCV/UzYj0O4sBAC7xWn1QV9wBAORoqJfqojsA8CjxVd1Xa64AADZ4SlOZ759zAFranbZ4qw7VthWAlvPtGIGacSj2g9vElwCo+SGZ+d62yXM+qR3j/lXcB6V+J4dhub8XvFl6NK9R4ZsqK529xVcVVuDVzPnL6Qq8njtPUAjOUzQrkKRynqYTnCcqBeep2hVIVjtP14/HgruCxegPtyUbwXnRavS3y7LdyMFt4XLk5LJ0O+UaSfFauS7f/wUlBx587OgH9wAAAABJRU5ErkJggg==" />
+            </svg>
+
             <img src="images/logo.png" class="logo" alt="Logo">
-            <a id="next" href="#">&#9654;</a>
+            <!-- <a id="next" href="#">&#9654;</a> -->
+            <svg id="next" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64"
+                height="25" viewBox="0 0 64 64">
+                <image id="Layer_0" data-name="Layer 0" width="64" height="64"
+                    xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAAAbEAAAGxAWGYKA4AAAAHdElNRQflDA4XHgRlN/SQAAACsElEQVRo3s2ZP2gTYRTAf3cJLYbQoYvQgIFQXDoUBLcIIVinNI46xwwdKi7BRRGci0XQVWfdSoYsigR0CxQcIoIlg5BAA3YIColInsPdJamNzX3ffemX7w25cO9973ffv3v3niOoNSdJngxrI4HOSFp8kJ+KHUpoIcUONfrnKvWpsUNKoddQSgkqNBiG7nVIgwoJIwDEKNNWGKixtCkTiwhAgaaW80CaFLQBSFOP5DyQOmkNALJ0jbgXhC5ZRQBKDIy5F4QBpdAAxNg36jyQ/WlLcpr7g7m4F4SDswhnAebz9KNRmAFAaa7uBfl3LZz+kzW89KbJ4PSOmLxMG9x450l38lyYBDBz7ISR+hQAChfmXpDxAR38xCKe+arSDDZkAFC+UPeCUJ4AIBH6hfuIQ0MAbS9e8AAqoc1yuJQ5NoJQGQM0wgMIAivsGTgxGj4AKYVgKxdcsE41IsCQlOAC2ziKkSwgR1LkFl/ULccBNtvgAkXdHuQdm9znRBuhCJCcEWj/ZwrGwiov+aM1CX2SLnmWIwwjICeyyybvNUyXybtkorn3IZqyxW2OlA0zLmsmAACkygYP6SkZrRkEAPkte1zlNUNLAAByLPe4zidrAAByKDe4y/cwANBT2ji58Kpc4gm/Zij1XPPPr9ZcOvPp2LnDV56SmKHWmQuAc835yBuuhFA1D+Bcdl7RIBtSvRM3CeAs8YDHrCiYmARwijxjXdGoE6dlxPkGz7mpYdiy/jpGoKYPQJxdfmgHZTUvJKtqD/wWn3nBqvbMVbEflHqdWQzLvXfBW4Vhd50y36iwpD3wQfO8CgvwaWb943QBPs+tJygE6ymaBUhSWU/TCdYTlYL1VO0CJKutp+tHa8FewcK/YbdkI1gvWvm3bZbtfAW7hUtfyWbpdkJ1LsVrx3b5/i/HgiATpyCtZAAAAABJRU5ErkJggg==" />
+            </svg>
         </div>
         <!-- Starting main slider with elements -->
         <div id="slider">
             <!-- Div for sliding with count in javascript with array -->
             <div class="slide">
                 <!-- >img class as child elements for storing in array in javascript  -->
-                <img src="images/01.jpg" alt="img1" class="img">
+                <img src="images/01.jpg" alt="img1" class="img" onmouseover="over()" onmouseleave="leave()">
             </div>
             <div class="slide">
-                <img src="images/02.jpg" alt="img2" class="img">
+                <img src="images/02.jpg" alt="img2" class="img" onmouseover="over()" onmouseleave="leave()">
             </div>
             <div class="slide">
-                <img src="images/03.jpg" alt="img3" class="img">
+                <img src="images/03.jpg" alt="img3" class="img" onmouseover="over()" onmouseleave="leave()">
             </div>
             <div class="slide">
-                <img src="images/04.jpg" alt="img4" class="img">
+                <img src="images/04.jpg" alt="img4" class="img" onmouseover="over()" onmouseleave="leave()">
             </div>
             <div class="slide">
-                <img src="images/05.jpg" alt="img5" class="img">
+                <img src="images/05.jpg" alt="img5" class="img" onmouseover="over()" onmouseleave="leave()">
             </div>
         </div>
     </div>
 
     <!-- Define the scripts for image slider -->
-    <script src='js/gsap.min.js'></script> <!-- Minified gsap library -->
+    <script src='https://unpkg.com/gsap@3.8.0/dist/gsap.min.js'></script> <!-- Minified gsap library -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
     <script src="js/app.js"></script> <!-- Custom Javascript file -->
 </body>
 

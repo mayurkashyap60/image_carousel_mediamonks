@@ -4,7 +4,7 @@ const $slides = gsap.utils.toArray(".slide"); // to store all slide elements in 
 const $slidesImage = gsap.utils.toArray(".img"); // store all images in array for sliding
 const $buttonPrev = document.getElementById("prev"); // defined variable for previous slide
 const $buttonNext = document.getElementById("next"); // defined variable for next slide
-
+var isAutoPlay = false; //intialized variable for stopping autplay slider
 //initializing all variables
 
 let totalSlides = $slides.length; // here first we get all slide length in a totalSlides variable
@@ -59,6 +59,7 @@ const handlePrev = () => {
   currentSlide = slidesWrap(currentSlide - 1);
   transitionInSlide({ slide: currentSlide, direction: -1 });
   transitionOutSlide({ slide: oldSlide, direction: -1 });
+  stopAutoPlay();
 };
 
 // function for handling the slider's next slide
@@ -75,9 +76,43 @@ $slides.forEach(($slide, index) => {
     transitionInSlide({ slide: index, duration: 0 });
     return;
   }
-
   transitionOutSlide({ slide: index, duration: 0 });
 });
 
 $buttonPrev.addEventListener("click", handlePrev); // adding event listener form sliding previous slide
 $buttonNext.addEventListener("click", handleNext); // adding event listener form sliding next slide
+
+//function for slider looping
+const play = () => {
+  handleNext();
+  TweenLite.delayedCall(4, play);
+};
+
+//function for starting autoplay slider
+const startAutoPlay = (immediate) => {
+  if (immediate != null) {
+    immediate = false;
+  }
+
+  if (immediate) {
+    handleNext();
+  }
+  TweenLite.delayedCall(3, play);
+};
+//call autoplay function
+startAutoPlay();
+
+//function for stopping autoplay slider
+const stopAutoPlay = () => {
+  isAutoPlay = false;
+  TweenLite.killTweensOf(play);
+};
+
+//over function for stop autoplay when user leave his cursor on slider
+const over = () => {
+  stopAutoPlay();
+};
+//leave function for starting autoplay when user leave his cursor on slider
+const leave = () => {
+  startAutoPlay();
+};
