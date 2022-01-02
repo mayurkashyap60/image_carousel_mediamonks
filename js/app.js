@@ -1,90 +1,76 @@
-//initializing all variables
-
-const $slides = gsap.utils.toArray(".slide"); // to store all slide elements in array for sliding
-const $slidesImage = gsap.utils.toArray(".img"); // store all images in array for sliding
+// initializing all vaiables
+var $slider = document.getElementById("slider");
+const $sliderWidth = $slider.offsetWidth; // to get their size in pixel for sliding
+const $slideList = document.getElementById("sliderWrap");
+const $items = $slideList.querySelectorAll("li").length; // store all list in array for sliding
 const $buttonPrev = document.getElementById("prev"); // defined variable for previous slide
 const $buttonNext = document.getElementById("next"); // defined variable for next slide
+var count = 1; //to default value
 var isAutoPlay = false; //intialized variable for stopping autplay slider
-//initializing all variables
 
-let totalSlides = $slides.length; // here first we get all slide length in a totalSlides variable
-let currentSlide = 0; // take an variable and define it's state a zero for starting slide as a string from the zero.
-const slidesWrap = gsap.utils.wrap(0, totalSlides); // store index of an Array into a specified range in variable
-
-// variable for store their slide, directon and duration for sliding content
-const transitionInSlide = ({ slide, direction = 1, duration = 1 }) => {
-  //gsap.fromTo define for the starting and ending values for an animation
-  gsap.fromTo(
-    $slides[slide],
-    {
-      xPercent: direction > 0 ? 100 : -100,
-    },
-    {
-      xPercent: 0,
-      duration,
-    }
-  );
-
-  //gsap.fromTo define for the starting and ending values for an animation
-  gsap.fromTo(
-    $slidesImage[slide], // sliding all sides as an array starting from the zero to array length
-    {
-      xPercent: direction > 0 ? -100 : 100,
-    },
-
-    {
-      xPercent: 0,
-      duration,
-    }
-  );
-};
-
-// function for slide with translate therir postion for x-axis from 0 to 100
-const transitionOutSlide = ({ slide, direction = 1, duration = 1 }) => {
-  gsap.to($slides[slide], {
-    xPercent: direction > 0 ? -100 : 100,
-    duration,
+//create function for load image slider
+var imageSlider = () => {
+  window.addEventListener("resize", () => {
+    $sliderWidth = $slider.offsetWidth;
   });
 
-  // gsap.to define the destination or starting index value
-  gsap.to($slidesImage[slide], {
-    xPercent: direction > 0 ? 100 : -100,
-    duration,
+  // function for handling the slider's next slide
+  nextSlide = () => {
+    if (count < $items) {
+      var abc = count++;
+      switch (abc) {
+        case 1:
+          TweenMax.to($slideList, { css: { left: -300 } });
+          break;
+        case 2:
+          TweenMax.to($slideList, { css: { left: -600 } });
+          break;
+        case 3:
+          TweenMax.to($slideList, { css: { left: -900 } });
+          break;
+        case 4:
+          TweenMax.to($slideList, { css: { left: -1200 } });
+          break;
+        default:
+          console.log("Not An Value");
+          break;
+      }
+    } else if ((count = $items)) {
+      TweenMax.to($slideList, { css: { left: 0 } });
+      // TweenMax.to($slideList, { x: 0 });
+      count = 1;
+    }
+  };
+
+  // function for handling the slider's previous slide
+  prevSlide = () => {
+    if (count > 1) {
+      count = count - 2;
+      $slideList.style.left = "-" + count * $sliderWidth + "px";
+      count++;
+    } else if ((count = 1)) {
+      count = $items - 1;
+      $slideList.style.left = "-" + count * $sliderWidth + "px";
+      count++;
+    }
+  };
+
+  $buttonNext.addEventListener("click", () => {
+    nextSlide();
+  });
+
+  $buttonPrev.addEventListener("click", () => {
+    prevSlide();
   });
 };
-
-// function for handling the slider's previous slide
-const handlePrev = () => {
-  const oldSlide = currentSlide;
-  currentSlide = slidesWrap(currentSlide - 1);
-  transitionInSlide({ slide: currentSlide, direction: -1 });
-  transitionOutSlide({ slide: oldSlide, direction: -1 });
-  stopAutoPlay();
+// when browser body load function
+window.onload = () => {
+  imageSlider();
 };
 
-// function for handling the slider's next slide
-const handleNext = () => {
-  const oldSlide = currentSlide;
-  currentSlide = slidesWrap(currentSlide + 1);
-  transitionInSlide({ slide: currentSlide });
-  transitionOutSlide({ slide: oldSlide });
-};
-
-$slides.forEach(($slide, index) => {
-  // define loop for starting from the zero with animation using array of index
-  if (index === currentSlide) {
-    transitionInSlide({ slide: index, duration: 0 });
-    return;
-  }
-  transitionOutSlide({ slide: index, duration: 0 });
-});
-
-$buttonPrev.addEventListener("click", handlePrev); // adding event listener form sliding previous slide
-$buttonNext.addEventListener("click", handleNext); // adding event listener form sliding next slide
-
-//function for slider looping
+//function for slider handling dealy function
 const play = () => {
-  handleNext();
+  nextSlide();
   TweenLite.delayedCall(4, play);
 };
 
@@ -95,13 +81,14 @@ const startAutoPlay = (immediate) => {
   }
 
   if (immediate) {
-    handleNext();
+    nextSlide();
   }
-  TweenLite.delayedCall(3, play);
+  TweenLite.delayedCall(4, play);
 };
 //call autoplay function
 startAutoPlay();
 
+////////////////////////////////////
 //function for stopping autoplay slider
 const stopAutoPlay = () => {
   isAutoPlay = false;
